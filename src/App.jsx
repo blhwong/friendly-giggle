@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Video from 'twilio-video';
 import './App.css';
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzM1YWQ2YjA0NTA1NmQwOGI0MDI2ZmYyNTBlZjk1ODliLTE1Mjc0NTk2NjQiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJQZXJzb24gMiIsInZpZGVvIjp7InJvb20iOiJSb29tIDEifX0sImlhdCI6MTUyNzQ1OTY2NCwiZXhwIjoxNTI3NDYzMjY0LCJpc3MiOiJTSzM1YWQ2YjA0NTA1NmQwOGI0MDI2ZmYyNTBlZjk1ODliIiwic3ViIjoiQUMyY2IxNzM3OWNkMTBiODQxNzgxMTM1MTkyOGJkMzk0YiJ9.fukdOhcSYnakObUWPmozmgHwirLzf7qjqd88eJcELaQ';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzM1YWQ2YjA0NTA1NmQwOGI0MDI2ZmYyNTBlZjk1ODliLTE1Mjc1MjY2NTMiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJQZXJzb24gMiIsInZpZGVvIjp7InJvb20iOiJSb29tIDEifX0sImlhdCI6MTUyNzUyNjY1MywiZXhwIjoxNTI3NTMwMjUzLCJpc3MiOiJTSzM1YWQ2YjA0NTA1NmQwOGI0MDI2ZmYyNTBlZjk1ODliIiwic3ViIjoiQUMyY2IxNzM3OWNkMTBiODQxNzgxMTM1MTkyOGJkMzk0YiJ9.inCDgxSYq91N6Dq09OVjOpIn5VAbw6lA3GkwXYglMfk';
 
 class App extends Component {
   componentDidMount() {
@@ -21,8 +21,13 @@ class App extends Component {
           });
 
           participant.on('trackAdded', (track) => {
-            console.log('added track', track);
-            document.getElementById('remote-media-div').appendChild(track.attach());
+            const media = track.attach();
+            console.log(track);
+            console.log('added track', media);
+            if (track.kind === 'audio') {
+              media.pause();
+            }
+            document.getElementById('remote-media-div').appendChild(media);
           });
         });
       }, console.error);
