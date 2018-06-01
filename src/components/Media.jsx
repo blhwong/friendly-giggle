@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import Video from 'twilio-video';
-import './App.css';
+import axios from 'axios';
+import './Media.css';
 
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzM1YWQ2YjA0NTA1NmQwOGI0MDI2ZmYyNTBlZjk1ODliLTE1Mjc1NDgxMDMiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJQZXJzb24gMiIsInZpZGVvIjp7InJvb20iOiJSb29tIDEifX0sImlhdCI6MTUyNzU0ODEwMywiZXhwIjoxNTI3NTUxNzAzLCJpc3MiOiJTSzM1YWQ2YjA0NTA1NmQwOGI0MDI2ZmYyNTBlZjk1ODliIiwic3ViIjoiQUMyY2IxNzM3OWNkMTBiODQxNzgxMTM1MTkyOGJkMzk0YiJ9.twRyg3ER0rZBQaRKbXsIcseJkTyu5BeemYlnqXEtjmQ';
 
-class App extends Component {
+class Media extends Component {
   state = {
     participants: {},
   };
 
   componentDidMount() {
-    Video.connect(token, { name: 'Room 1' })
-      .then((room) => {
-        room.participants.forEach((participant) => {
-          this.setListener(participant);
-        });
-      }, console.error);
+    // Video.connect(token, { name: 'Room 1' })
+    //   .then((room) => {
+    //     room.participants.forEach((participant) => {
+    //       this.setListener(participant);
+    //     });
+    //   }, console.error);
+    console.log(window.location);
+    axios.get('http://localhost:3001/token')
+      .then((response) => {
+        console.log(response);
+      });
   }
 
   setListener = (participant) => {
@@ -66,6 +72,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        Caller View
         <div id="remote-media-div" />
         <div className="mute">
           {Object.entries(this.state.participants).map(this.renderButton)}
@@ -75,4 +82,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Media;
