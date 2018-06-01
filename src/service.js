@@ -20,7 +20,10 @@ export const connect = async (phoneNumber = '14696826913', email = 'b.lh.wong@gm
   return json.status;
 };
 
-
 export const getToken = () => {
   console.log(window.location);
+  axios.get(`/connection${window.location.search}`)
+    .then((response) => {
+      console.log(response);
+    });
 };
