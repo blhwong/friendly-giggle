@@ -1,5 +1,14 @@
 import axios from 'axios';
 
+const get = async ({ url }) => {
+  const response = await axios.get(url);
+  if (response.status !== 200) {
+    console.error(response);
+  }
+  console.log(response);
+  return response.data;
+};
+
 const post = async ({ url, data }) => {
   const response = await axios.post(url, data);
   if (response.status !== 200) {
@@ -20,10 +29,9 @@ export const connect = async (phoneNumber = '14696826913', email = 'b.lh.wong@gm
   return json.status;
 };
 
-export const getToken = () => {
-  console.log(window.location);
-  axios.get(`/connection${window.location.search}`)
-    .then((response) => {
-      console.log(response);
-    });
+export const getToken = async () => {
+  const url = `/connection${window.location.search}`;
+  const json = await get({ url });
+  console.log(json);
+  return json.token;
 };
