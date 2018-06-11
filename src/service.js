@@ -33,5 +33,5 @@ export const getToken = async () => {
   const url = `/connection${window.location.search}`;
   const json = await get({ url });
   console.log(json);
-  return json.token;
+  return json;
 };
