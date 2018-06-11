@@ -18,7 +18,7 @@ const post = async ({ url, data }) => {
   return response.data;
 };
 
-export const connect = async (phoneNumber = '14696826913', email = 'b.lh.wong@gmail.com') => {
+export const connect = async (phoneNumber = '14696826922', email = 'brian.lw.wong@gmail.com') => {
   const url = '/initiate';
   const data = {
     email,

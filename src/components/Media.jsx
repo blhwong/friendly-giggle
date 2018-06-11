@@ -10,7 +10,7 @@ class Media extends Component {
 
   async componentDidMount() {
     const token = await getToken();
-    Video.connect(token, { name: 'Room 1' })
+    Video.connect(token, { name: token.room })
       .then((room) => {
         room.participants.forEach((participant) => {
           this.setListener(participant);
