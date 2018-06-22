@@ -21,6 +21,7 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
+    "dev-server": "nodemon server.js",
     "dev-client": "PORT=3002 react-scripts start",
     "dev-client-https": "HTTPS=true PORT=3002 react-scripts start",
     "start": "npm run build & node server.js",
@@ -28,5 +29,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://pet-cam-aa.herokuapp.com"
+  "proxy": "http://localhost:3001"
 }

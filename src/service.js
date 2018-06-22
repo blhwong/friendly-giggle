@@ -19,7 +19,7 @@ const post = async ({ url, data }) => {
 };
 
 export const connect = async (phoneNumber, email) => {
-  const url = '/initiate';
+  const url = `${process.env.REACT_APP_SERVER_BASE}/initiate`;
   const data = {
     email,
     phoneNumber,
@@ -30,7 +30,7 @@ export const connect = async (phoneNumber, email) => {
 };
 
 export const getToken = async () => {
-  const url = `/connection${window.location.search}`;
+  const url = `${process.env.REACT_APP_SERVER_BASE}/connection${window.location.search}`;
   const json = await get({ url });
   console.log(json);
   return json;
