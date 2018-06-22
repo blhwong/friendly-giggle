@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.2.2",
@@ -21,10 +23,10 @@
   "scripts": {
     "dev-client": "PORT=3002 react-scripts start",
     "dev-client-https": "HTTPS=true PORT=3002 react-scripts start",
-    "start": "npm run build",
+    "start": "npm run build & node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://pet-cam-aa.herokuapp.com/home"
+  "proxy": "https://pet-cam-aa.herokuapp.com"
 }
