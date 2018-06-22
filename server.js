@@ -4,10 +4,12 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'build')));
+const entry = process.env.NODE_ENV === 'production' ? 'build' : 'public';
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.use(express.static(path.resolve(__dirname, entry)));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, entry, 'index.html'));
 });
 
 app.listen(process.env.PORT);
