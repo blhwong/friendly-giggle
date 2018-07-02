@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { Input, Button, Icon, Layout } from 'antd';
+import 'antd/dist/antd.css';
 import { connect } from '../service';
 import './Identifier.css';
+
+const { Header } = Layout;
 
 class Identifier extends Component {
   state = {
@@ -20,22 +24,25 @@ class Identifier extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <input
-            type="text"
-            placeholder="Email"
-            onChange={event => this.update('email', event.target.value)}
-          />
+      <div className="Identifier">
+        <Header />
+        <div className="container">
+          <div>
+            <Input
+              type="text"
+              placeholder="Email"
+              onChange={event => this.update('email', event.target.value)}
+            />
+          </div>
+          <div>
+            <Input
+              type="text"
+              placeholder="Phone Number"
+              onChange={event => this.update('phoneNumber', event.target.value)}
+            />
+          </div>
+          <Button className="button" onClick={this.handleClick}>Connect<Icon type="cloud-o" /></Button>
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Phone Number"
-            onChange={event => this.update('phoneNumber', event.target.value)}
-          />
-        </div>
-        <button onClick={this.handleClick}>Connect</button>
       </div>
     );
   }

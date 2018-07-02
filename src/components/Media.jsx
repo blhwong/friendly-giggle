@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import Video from 'twilio-video';
+import { Layout, Button, Col } from 'antd';
+import 'antd/dist/antd.css';
 import { getToken } from '../service';
 import './Media.css';
+
+const { Header, Content } = Layout;
 
 class Media extends Component {
   state = {
     participants: {},
+    room: '',
   };
 
   async componentDidMount() {
@@ -13,12 +18,13 @@ class Media extends Component {
     Video.connect(token, { name })
       .then((room) => {
         room.participants.forEach((participant) => {
-          this.setListener(participant);
+          this.setListener(participant, room.name);
         });
       }, console.error);
   }
 
-  setListener = (participant) => {
+  setListener = (participant, room) => {
+    this.setState({ room });
     participant.on('trackAdded', (track) => {
       this.updateParticipant(participant, track);
     });
@@ -38,7 +44,7 @@ class Media extends Component {
   renderButton = ([sid, entry]) => {
     const action = entry.media.paused ? 'Unmute' : 'Mute';
     return (
-      <button
+      <Button
         key={`Participant-${sid}`}
         onClick={() => {
           const { isMuted } = this.state.participants[sid];
@@ -58,19 +64,29 @@ class Media extends Component {
         }}
       >
         {`${action} ${entry.identity}`}
-      </button>
+      </Button>
     );
   }
 
 
   render() {
     return (
-      <div>
-        Caller View
-        <div id="remote-media-div" />
-        <div className="mute">
-          {Object.entries(this.state.participants).map(this.renderButton)}
-        </div>
+      <div className="Media">
+        <Header>
+          <Col>Media</Col>
+        </Header>
+        <Content className="container">
+          <div id="remote-media-div">
+            {this.state.room && (
+              <div className="room">
+                {'Room: '}<strong>{this.state.room}</strong>
+              </div>
+            )}
+          </div>
+          <div className="mute">
+            {Object.entries(this.state.participants).map(this.renderButton)}
+          </div>
+        </Content>
       </div>
     );
   }
