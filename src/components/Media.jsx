@@ -79,7 +79,7 @@ class Media extends Component {
           <div id="remote-media-div">
             {this.state.room && (
               <div className="room">
-                {`Room: ${this.state.room}`}
+                {'Room: '}<strong>{this.state.room}</strong>
               </div>
             )}
           </div>
