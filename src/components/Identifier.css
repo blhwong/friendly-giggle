@@ -30,8 +30,12 @@
   height: 100%;
 }
 
+.Identifier div {
+  padding: 5px
+}
+
 .button {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 @keyframes App-logo-spin {
