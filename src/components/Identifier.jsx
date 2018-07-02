@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Input, Button, Icon } from 'antd';
+import 'antd/dist/antd.css';
 import { connect } from '../service';
 import './Identifier.css';
 
@@ -20,22 +22,22 @@ class Identifier extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Identifier">
         <div>
-          <input
+          <Input
             type="text"
             placeholder="Email"
             onChange={event => this.update('email', event.target.value)}
           />
         </div>
         <div>
-          <input
+          <Input
             type="text"
             placeholder="Phone Number"
             onChange={event => this.update('phoneNumber', event.target.value)}
           />
         </div>
-        <button onClick={this.handleClick}>Connect</button>
+        <Button className="button" onClick={this.handleClick}>Connect<Icon type="cloud-o" /></Button>
       </div>
     );
   }
