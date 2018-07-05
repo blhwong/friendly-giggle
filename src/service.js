@@ -20,6 +20,7 @@ const post = async ({ url, data }) => {
 
 export const connect = async (phoneNumber, email) => {
   const url = `${process.env.REACT_APP_SERVER_BASE}/initiate`;
+  console.log(url);
   const data = {
     email,
     phoneNumber,
