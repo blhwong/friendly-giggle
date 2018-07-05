@@ -57,6 +57,10 @@ install dependencies
 ```
 npm install
 ```
+start server
+```
+npm run dev-server
+```
 start client
 ```
 npm run dev-client-https
