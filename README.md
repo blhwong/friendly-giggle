@@ -1,8 +1,8 @@
 # pet-cam-fg
-Pet cam client and API that serves connection to user and their pet. This project is intended to run alongside [pet-cam-aa](https://github.com/wongbros/automatic-adventure).
+Pet cam user that identifies authorized users and establishes connection to video feed. This project is intended to run alongside [pet-cam-aa](https://github.com/wongbros/automatic-adventure).
 
 ## Description
-A web application that securely connects a user with their pet over web cam. A user can simply login using their Google account and setup details including a whitelist of phone numbers that are allowed to connect to their room. After starting the camera, only the user with their hashed url, which can be obtained via SMS to ensure privacy, can connect to the camera.
+A web application that securely connects a user with their pet over web cam. A user can enter the email of the Google account used to log into [pet-cam-aa](https://github.com/wongbros/automatic-adventure) and a whitelisted phone number attached to that account. Once you click the Connect button, the web application will validate the information and produce a hashed URL to the video feed that will be texted to the whitelisted number.
 
 Identifier
 ----
@@ -29,19 +29,15 @@ Pet Video Feed
 - React Router
 - Ant Design
 - Create react app
+- Socket.io Client
 
 ### Backend
 - Node
 - Express
-- MongoDB + Mongoose
-- Socket.io
 
 ### Other
 - Heroku
 - Twilio
-- Mocha + Chai
-- Google OAuth2
-- PassportJS
 
 ## Requirements
 - Node 8.9.x
@@ -64,12 +60,6 @@ npm install
 start database
 ```
 mongod
-```
-Note: if this fails, try ``` sudo mongod ```
-
-start server
-```
-npm run dev-server
 ```
 start client
 ```
