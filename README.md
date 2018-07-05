@@ -55,7 +55,7 @@ git clone <your forked url>
 ```
 cd to the root directory of the project
 ```
-cd automatic-adventure/
+cd friendly-giggle/
 ```
 install dependencies
 ```
