@@ -2,7 +2,7 @@
 Pet cam user that identifies authorized users and establishes connection to video feed. This project is intended to run alongside [pet-cam-aa](https://github.com/wongbros/automatic-adventure).
 
 ## Description
-A web application that securely connects a user with their pet over web cam. A user can enter the email of the Google account used to log into [pet-cam-aa](https://github.com/wongbros/automatic-adventure) and a whitelisted phone number attached to that account. Once you click the Connect button, the web application will validate the information and produce a hashed URL to the video feed that will be texted to the whitelisted number.
+A web application that securely connects a user with their pet over web cam. A user can enter the e-mail of the Google account used to log into [pet-cam-aa](https://github.com/wongbros/automatic-adventure) and a whitelisted phone number attached to that account. Once you click the Connect button, the web application will validate the information and produce a hashed URL to the video feed that will be texted to the whitelisted number.
 
 Identifier
 ----
@@ -56,10 +56,6 @@ cd friendly-giggle/
 install dependencies
 ```
 npm install
-```
-start database
-```
-mongod
 ```
 start client
 ```
